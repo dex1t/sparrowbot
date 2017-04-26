@@ -1,0 +1,9 @@
+{
+  "name": "sparrowbot",
+  "version": "1.0.0",
+  "description": "active support on twitter",
+  "main": "index.js",
+  "repository": "https://github.com/dex1t/sparrowbot",
+  "author": "dex1t",
+  "license": "MIT"
+}
