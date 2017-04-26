@@ -1,23 +1,12 @@
-const Botkit = require('botkit');
+const Bot = require('./app/bot.js');
 
-if (!process.env.token) {
-  console.log('Error: Specify token in environment');
+if (process.env.SLACK_BOT_TOKEN &&
+    process.env.TWITTER_CONSUMER_KEY &&
+    process.env.TWITTER_CONSUMER_SECRET &&
+    process.env.TWITTER_ACCESS_TOKEN &&
+    process.env.TWITTER_ACCESS_SECRET) {
+  Bot.run();
+} else {
+  console.log('Error: Specify Slack Token and Twitter Token in environment');
   process.exit(1);
 }
-
-const controller = Botkit.slackbot({
-  debug: false,
-});
-
-controller.spawn({
-  token: process.env.token,
-}).startRTM((err) => {
-  if (err) {
-    throw new Error(err);
-  }
-});
-
-// say hi
-controller.hears('hi', ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
-  bot.reply(message, 'hi');
-});
