@@ -1,6 +1,8 @@
 const Bot = require('./app/bot.js');
 
 if (process.env.SLACK_BOT_TOKEN &&
+    process.env.SLACK_APP_CLIENT_ID &&
+    process.env.SLACK_APP_CLIENT_SECRET &&
     process.env.TWITTER_CONSUMER_KEY &&
     process.env.TWITTER_CONSUMER_SECRET &&
     process.env.TWITTER_ACCESS_TOKEN &&
