@@ -1,6 +1,6 @@
 # Sparrowbot
 
-a Slack Bot to interact with Twitter for Customer Success
+a Slack Bot to interact with Twitter for Customer Success :bird:
 
 ## Features
 
@@ -20,6 +20,5 @@ a Slack Bot to interact with Twitter for Customer Success
 
 ## Development Note
 
-Slack requires callback url with https to use the interactive message buttons
-Use [localtunnel.me](http://localtunnel.me/) (or ngrock) on development.
+Slack requires callback url with https to use the interactive message buttons. Use [localtunnel.me](http://localtunnel.me/) (or ngrock) on development.  
 https://github.com/howdyai/botkit/blob/master/docs/readme-slack.md#message-buttons
