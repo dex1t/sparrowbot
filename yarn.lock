@@ -731,6 +731,10 @@ decamelize@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
+deep-extend@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.1.tgz#efe4113d08085f4e6f9687759810f807469e2253"
+
 deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
@@ -2082,7 +2086,7 @@ request@2.78.0:
     tough-cookie "~2.3.0"
     tunnel-agent "~0.4.1"
 
-request@^2.67.0, request@^2.69.0, request@^2.81.0:
+request@^2.67.0, request@^2.69.0, request@^2.72.0, request@^2.81.0:
   version "2.81.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
   dependencies:
@@ -2401,6 +2405,13 @@ twilio@^2.9.1:
     scmp "0.0.3"
     string.prototype.startswith "^0.2.0"
     underscore "1.x"
+
+twitter@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/twitter/-/twitter-1.7.0.tgz#2882e208e0ad83bb226528613561f1dd233ac94b"
+  dependencies:
+    deep-extend "^0.4.1"
+    request "^2.72.0"
 
 type-check@~0.3.2:
   version "0.3.2"
