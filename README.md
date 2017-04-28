@@ -1,6 +1,12 @@
 # sparrowbot
 
-![](http://68.media.tumblr.com/074cb246526eff6a5234b3ed5c7c5ee2/tumblr_mm8hd0hd3y1rpci1ro1_1280.jpg)
+## Prepare
+
+1. Create [Slack Bot as application](https://api.slack.com/apps?new_app=1), and get _Bot User OAuth Access Token_
+  - Enable Interactive Messages and Bots
+  - Set callback url to enable interactive message
+ 2. Create [Twitter application](https://apps.twitter.com/app/new), and get _Consumer Key/Secret_, _Access Token/Secret_
+ 3. Set token to `.env`
 
 ## Development Note
 
