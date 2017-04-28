@@ -1,6 +1,16 @@
-# sparrowbot
+# Sparrowbot
 
-## Prepare
+a Slack Bot to interact with Twitter for Customer Success
+
+## Features
+
+- [x] Streaming
+- [ ] Favorite
+- [ ] Retweet
+- [ ] Reply via Slack Thread
+- [ ] Tweet
+
+## Usage
 
 - Create [Slack Bot as application](https://api.slack.com/apps?new_app=1), and get _Bot User OAuth Access Token_
   - Enable Interactive Messages and Bots
