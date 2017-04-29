@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "botkit": "^0.5.2",
+    "botkit-storage-redis": "^1.1.0",
     "twitter": "^1.7.0"
   },
   "devDependencies": {
