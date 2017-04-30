@@ -5,7 +5,7 @@ a Slack Bot to interact with Twitter for Customer Success :bird:
 ## Features
 
 - [x] Streaming
-- [ ] Favorite
+- [x] Favorite
 - [ ] Retweet
 - [ ] Reply via Slack Thread
 - [ ] Tweet
