@@ -55,7 +55,6 @@ class Stream {
       author_icon: tweet.user.profile_image_url_https,
       author_link: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
       text: tweet.text,
-      color: '#00aced',
       footer: 'Twitter',
       footer_icon: 'https://a.slack-edge.com/6e067/img/services/twitter_pixel_snapped_32.png',
       ts: new Date(Date.parse(tweet.created_at)).getTime() / 1000,
