@@ -60,7 +60,6 @@ class Stream {
       ts: new Date(Date.parse(tweet.created_at)).getTime() / 1000,
       fallback: tweet.text,
       callback_id: tweet.id_str,
-      attachment_type: 'default',
       actions: [
         {
           name: 'like',
