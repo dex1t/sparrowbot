@@ -14,7 +14,7 @@ const redisStorage = require('botkit-storage-redis')({
 class Bot {
   constructor() {
     this.controller = Botkit.slackbot({
-      debug: false,
+      retry: 10,
       clientId: process.env.SLACK_APP_CLIENT_ID,
       clientSecret: process.env.SLACK_APP_CLIENT_SECRET,
       scopes: ['bot'],
