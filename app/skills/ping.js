@@ -4,8 +4,8 @@ class Ping {
   }
 
   run() {
-    this.controller.hears('ping', ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
-      bot.reply(message, 'pong');
+    this.controller.hears('ping', ['direct_message', 'direct_mention', 'mention'], (bot, msg) => {
+      bot.reply(msg, 'pong');
     });
   }
 }
