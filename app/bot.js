@@ -1,15 +1,25 @@
 const Botkit = require('botkit');
 const path = require('path');
 const fs = require('fs');
+const url = require('url');
+const redis = require('botkit-storage-redis');
 
 class Bot {
   static run() {
+    const redisURL = url.parse(process.env.REDIS_URL);
+    const redisStorage = redis({
+      namespace: 'sparrowbot-dev',
+      host: redisURL.hostname,
+      port: redisURL.port,
+      auth_pass: redisURL.auth && redisURL.auth.split(':')[1],
+    });
+
     const controller = Botkit.slackbot({
       debug: false,
       clientId: process.env.SLACK_APP_CLIENT_ID,
       clientSecret: process.env.SLACK_APP_CLIENT_SECRET,
       scopes: ['bot'],
-      json_file_store: './',
+      storage: redisStorage,
     });
 
     controller.spawn({
