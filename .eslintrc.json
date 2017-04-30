@@ -3,5 +3,9 @@
         "es6": true,
         "node": true
     },
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "rules": {
+        "class-methods-use-this": 0,
+        "quotes": 0
+    }
 }
