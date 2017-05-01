@@ -11,26 +11,26 @@
   "logo": "https://raw.githubusercontent.com/dex1t/sparrowbot/master/icon.png",
   "env": {
     "SLACK_BOT_TOKEN": {
-      "description": "Bot User OAuth Access Token (https://api.slack.com/apps)",
+      "description": "Bot User OAuth Access Token (https://api.slack.com/apps)"
     },
     "SLACK_APP_CLIENT_ID": {
-      "description": "Slack App Credentials (https://api.slack.com/apps)",
+      "description": "Slack App Credentials (https://api.slack.com/apps)"
     },
     "SLACK_APP_CLIENT_SECRET": {
-      "description": "Slack App Credentials (https://api.slack.com/apps)",
+      "description": "Slack App Credentials (https://api.slack.com/apps)"
     },
     "TWITTER_CONSUMER_KEY": {
-      "description": "Twitter Application Settings (https://apps.twitter.com)",
+      "description": "Twitter Application Settings (https://apps.twitter.com)"
     },
     "TWITTER_CONSUMER_SECRET": {
-      "description": "Twitter Application Settings (https://apps.twitter.com)",
+      "description": "Twitter Application Settings (https://apps.twitter.com)"
     },
     "TWITTER_ACCESS_TOKEN": {
-      "description": "Your Twitter Account Credentials for this bot (https://apps.twitter.com)",
+      "description": "Your Twitter Account Credentials for this bot (https://apps.twitter.com)"
     },
     "TWITTER_ACCESS_SECRET": {
-      "description": "Your Twitter Account Credentials for this bot (https://apps.twitter.com)",
-    },
+      "description": "Your Twitter Account Credentials for this bot (https://apps.twitter.com)"
+    }
   },
   "addons": [
     "redistogo:nano"
