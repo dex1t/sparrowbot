@@ -31,10 +31,6 @@
     "TWITTER_ACCESS_SECRET": {
       "description": "Your Twitter Account Credentials for this bot (https://apps.twitter.com)",
     },
-    "WEB_CONCURRENCY": {
-      "description": "The number of processes to run.",
-      "value": "5"
-    }
   },
   "addons": [
     "redistogo:nano"
