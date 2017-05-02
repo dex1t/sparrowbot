@@ -10,18 +10,14 @@ a Slack Bot to interact with Twitter for Customer Success :bird:
 - [ ] Reply via Slack Thread
 - [ ] Tweet
 
-## Usage
+## Deployment
 
-<a href="https://slack.com/oauth/authorize?&client_id=2771850288.177682858631&scope=bot"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+1. Create [Slack application for bot user](https://api.slack.com/apps?new_app=1). Then enable the interactive messages feature and bot feature.
+2. Install Slack application to your Slack team.
+3. Create [Twitter application](https://apps.twitter.com/app/new) to interact with your Twitter account.
+4. Deploy Sparrowbot to Heroku, then set Slack and Twitter Token to Heroku config variables.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-
-- Create [Slack Bot as application](https://api.slack.com/apps?new_app=1), and get _Bot User OAuth Access Token_
-  - Enable Interactive Messages and Bots
-  - Set callback url to enable interactive message
-- Create [Twitter application](https://apps.twitter.com/app/new), and get _Consumer Key/Secret_, _Access Token/Secret_
-- Set token to `.env`
 
 ## Development Note
 
