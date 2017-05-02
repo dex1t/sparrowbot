@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const url = require('url');
 
-const redisURL = url.parse(process.env.REDIS_URL);
+const redisURL = url.parse(process.env.REDISTOGO_URL || process.env.REDIS_URL);
 const redisStorage = require('botkit-storage-redis')({
   namespace: 'sparrowbot',
   host: redisURL.hostname,
