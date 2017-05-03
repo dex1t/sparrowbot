@@ -5,13 +5,13 @@ class Stream {
   }
 
   run() {
-    this.controller.hears(['^start streaming "(.*)"$', '^start streaming$'], 'direct_mention', (bot, msg) => {
+    this.controller.hears(['^start streaming (.*)$', '^start streaming$'], 'direct_mention', (bot, msg) => {
       const query = msg.match[1] && msg.match[1].trim();
       if (this.stream) {
         bot.reply(msg, `Already streaming by "${this.stream.query}" :no_mouth:`);
         return;
       } else if (!query || query.length < 0) {
-        bot.reply(msg, 'No query parameters specified :cry:\nUsage: start streaming "query1,query2"\nhttps://dev.twitter.com/streaming/overview/request-parameters#track')
+        bot.reply(msg, 'No query parameters specified :cry:\nUsage: start streaming query1,query2\nhttps://dev.twitter.com/streaming/overview/request-parameters#track')
         return;
       }
 
@@ -23,7 +23,7 @@ class Stream {
     this.controller.hears('stop streaming', 'direct_mention', (bot, msg) => {
       if (this.stream) {
         this.stream.destroy();
-        bot.reply(msg, `OK:ok_hand: Stop streaming by "${this.stream.query}"`);
+        bot.reply(msg, `OK:ok_hand: Stop streaming by ${this.stream.query}`);
         this.stream = null;
       } else {
         bot.reply(msg, 'Stream is not found :no_mouth:');
@@ -32,7 +32,7 @@ class Stream {
 
     this.controller.hears('status', 'direct_mention', (bot, msg) => {
       if (this.stream) {
-        bot.reply(msg, `Now streaming by "${this.stream.query}" :surfer:`);
+        bot.reply(msg, `Now streaming by ${this.stream.query} :surfer:`);
       } else {
         bot.reply(msg, 'No stream :no_mouth:');
       }
