@@ -56,7 +56,7 @@ class Stream {
 
   buildTweetAttachment(tweet) {
     return {
-      author_name: `${tweet.user.name} @${tweet.user.screen_name}`,
+      author_name: `${tweet.user && tweet.user.name} @${tweet.user.screen_name}`,
       author_icon: tweet.user.profile_image_url_https,
       author_link: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
       text: tweet.text,
