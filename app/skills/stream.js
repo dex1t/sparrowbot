@@ -30,10 +30,18 @@ class Stream {
     this.controller.hears('stop streaming', 'direct_mention', (bot, msg) => {
       if (this.stream) {
         this.stream.destroy();
+        bot.reply(msg, `OK:ok_hand: Stop streaming by ${this.stream.query}`);
         this.stream = null;
-        bot.reply(msg, 'OK:ok_hand: Stop streaming');
       } else {
         bot.reply(msg, 'Stream is not found :no_mouth:');
+      }
+    });
+
+    this.controller.hears('status', 'direct_mention', (bot, msg) => {
+      if (this.stream) {
+        bot.reply(msg, `Now streaming by ${this.stream.query} :surfer:`);
+      } else {
+        bot.reply(msg, 'No stream :no_mouth:');
       }
     });
   }
