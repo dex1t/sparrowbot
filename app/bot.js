@@ -32,6 +32,7 @@ class Bot {
         }
       });
       this.controller.createWebhookEndpoints(this.controller.webserver);
+      this.controller.createHomepageEndpoint(this.controller.webserver);
     });
   }
 
