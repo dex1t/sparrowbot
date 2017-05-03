@@ -1,7 +1,6 @@
 const Bot = require('./app/bot.js');
 
-if (process.env.REDIS_URL &&
-    process.env.SLACK_BOT_TOKEN &&
+if (process.env.SLACK_BOT_TOKEN &&
     process.env.SLACK_APP_CLIENT_ID &&
     process.env.SLACK_APP_CLIENT_SECRET &&
     process.env.TWITTER_CONSUMER_KEY &&
