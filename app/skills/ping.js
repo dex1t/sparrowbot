@@ -1,6 +1,6 @@
 class Ping {
-  constructor(controller) {
-    this.controller = controller;
+  constructor(sparrowbot) {
+    this.controller = sparrowbot.controller;
   }
 
   run() {

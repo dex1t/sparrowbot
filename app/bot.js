@@ -39,7 +39,7 @@ class Bot {
   setupSkills() {
     fs.readdirSync(path.join(__dirname, 'skills')).forEach((file) => {
       const Skill = require(`./skills/${file}`); // eslint-disable-line
-      new Skill(this.controller).run();
+      new Skill(this).run();
     });
   }
 
