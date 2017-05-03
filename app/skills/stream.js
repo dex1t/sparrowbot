@@ -13,9 +13,7 @@ class Stream {
 
   run() {
     this.controller.hears(['^start streaming "(.*)"$', '^start streaming$'], 'direct_mention', (bot, msg) => {
-      console.log(msg.match)
       const query = msg.match[1] && msg.match[1].trim();
-      console.log(query)
       if (this.stream) {
         bot.reply(msg, `Already streaming by "${this.stream.query}" :no_mouth:`);
         return;
