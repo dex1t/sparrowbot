@@ -1,4 +1,5 @@
 const Botkit = require('botkit');
+const Twitter = require('twitter');
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
@@ -19,6 +20,12 @@ class Bot {
       clientSecret: process.env.SLACK_APP_CLIENT_SECRET,
       scopes: ['bot'],
       storage: redisStorage,
+    });
+    this.twitterClient = new Twitter({
+      consumer_key: process.env.TWITTER_CONSUMER_KEY,
+      consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+      access_token_key: process.env.TWITTER_ACCESS_TOKEN,
+      access_token_secret: process.env.TWITTER_ACCESS_SECRET,
     });
   }
 
