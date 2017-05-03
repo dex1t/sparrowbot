@@ -12,31 +12,35 @@ class Stream {
   }
 
   run() {
-    this.controller.hears('start', 'direct_mention', (bot, msg) => {
+    this.controller.hears('^start streaming(.*)$', 'direct_mention', (bot, msg) => {
+      const query = msg.match[1].trim();
       if (this.stream) {
-        bot.reply(msg, `already streaming by '${this.stream.track}'`);
-      } else {
-        bot.reply(msg, 'start streaming');
-        this.startStreaming(bot, msg);
+        bot.reply(msg, `Already streaming by "${this.stream.query}" :no_mouth:`);
+        return;
+      } else if (query.length < 1) {
+        bot.reply(msg, 'No filter specified :cry:\nUsage: start streaming "Twitter search query"')
+        return;
       }
+
+      bot.botkit.log('Streaming Query:', query);
+      bot.reply(msg, `OK:ok_hand: Start streaming by ${query}`);
+      this.startStreaming(bot, msg, query);
     });
 
-    this.controller.hears('stop', 'direct_mention', (bot, msg) => {
+    this.controller.hears('stop streaming', 'direct_mention', (bot, msg) => {
       if (this.stream) {
         this.stream.destroy();
         this.stream = null;
-        bot.reply(msg, 'stop streaming');
+        bot.reply(msg, 'OK:ok_hand: Stop streaming');
       } else {
-        bot.reply(msg, 'stream is not found');
+        bot.reply(msg, 'Stream is not found :no_mouth:');
       }
     });
   }
 
-  startStreaming(bot, msg) {
-    const track = 'プレミアムフライデー';
-
+  startStreaming(bot, msg, track) {
     this.stream = this.client.stream('statuses/filter', { track });
-    this.stream.track = track;
+    this.stream.query = track;
     this.stream.on('data', (tweet) => {
       bot.reply(msg, {
         attachments: [
