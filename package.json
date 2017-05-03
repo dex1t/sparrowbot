@@ -7,7 +7,7 @@
   "author": "dex1t",
   "license": "MIT",
   "engines": {
-      "node": "7.9"
+    "node": "7.9"
   },
   "dependencies": {
     "botkit": "^0.5.2",
