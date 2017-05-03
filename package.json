@@ -6,6 +6,9 @@
   "repository": "https://github.com/dex1t/sparrowbot",
   "author": "dex1t",
   "license": "MIT",
+  "engines": {
+      "node": "7.9.0"
+  },
   "dependencies": {
     "botkit": "^0.5.2",
     "botkit-storage-redis": "^1.1.0",
