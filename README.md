@@ -1,10 +1,10 @@
 # Sparrowbot
 
-a Slack Bot to interact with Twitter for Customer Success :bird:
+a Slack Bot to interact with Twitter for Customer Success :robot:
 
 ## Features
 
-- [x] Streaming
+- [x] Search
 - [x] Favorite
 - [ ] Retweet
 - [ ] Reply via Slack Thread
