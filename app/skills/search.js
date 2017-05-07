@@ -11,7 +11,7 @@ class Search {
         bot.reply(msg, `Already searching by "${this.job.query}" :no_mouth:`);
         return;
       } else if (!query || query.length < 0) {
-        bot.reply(msg, 'No query specified :cry:\nUsage: search "query"')
+        bot.reply(msg, 'No query specified :cry:\nUsage: search "query"');
         return;
       }
 
@@ -27,7 +27,7 @@ class Search {
     this.controller.hears(['stop searching', 'stop search'], 'direct_mention', (bot, msg) => {
       clearInterval(this.job);
       this.job = null;
-      this.controller.storage.channels.save( { id: msg.channel, sinceTweetId: null } );
+      this.controller.storage.channels.save({ id: msg.channel, sinceTweetId: null });
       bot.reply(msg, 'OK:ok_hand: Stop searching');
     });
 
@@ -49,11 +49,11 @@ class Search {
     });
   }
 
-  search(bot, msg, query, since_id = null) {
+  search(bot, msg, query, sinceId = null) {
     this.client.get('search/tweets', {
       result_type: 'recent',
       q: query,
-      since_id,
+      since_id: sinceId,
     }, (err, tweets) => {
       if (err) {
         bot.botkit.log('Error: Twitter Stream ', err);
@@ -63,7 +63,10 @@ class Search {
         return;
       }
 
-      this.controller.storage.channels.save( { id: msg.channel, sinceTweetId: tweets.statuses[0] && tweets.statuses[0].id_str } );
+      this.controller.storage.channels.save({
+        id: msg.channel,
+        sinceTweetId: tweets.statuses[0] && tweets.statuses[0].id_str,
+      });
 
       bot.botkit.log('Result Count:', tweets.statuses.length);
       tweets.statuses.forEach((tweet) => {

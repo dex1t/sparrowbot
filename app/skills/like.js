@@ -9,7 +9,6 @@ class Like {
       if (msg.actions[0].name !== 'like') {
         return;
       }
-      console.log(msg);
 
       this.client.post('favorites/create', { id: msg.callback_id }, (err, tweet, res) => {
         const nextMsg = msg.original_message;
