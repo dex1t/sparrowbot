@@ -18,6 +18,7 @@ class Search {
       bot.botkit.log('Query:', query);
       bot.reply(msg, `OK:ok_hand: Start searching by "${query}"`);
 
+      this.searchJob(bot, msg, query);
       this.job = setInterval(() => {
         this.searchJob(bot, msg, query);
       }, 60000);
