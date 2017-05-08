@@ -12,6 +12,12 @@ class Like {
 
       this.client.post('favorites/create', { id: msg.callback_id }, () => {
         const nextMsg = msg.original_message;
+
+        const action = nextMsg.attachments[0].actions.find(act => act.name === 'like');
+        action.name = 'unlike';
+        action.text = 'Unlike';
+        action.style = 'danger';
+
         nextMsg.attachments.push({
           color: '#00aced',
           text: `:heart: Liked by <@${msg.user}>`,
