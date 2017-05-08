@@ -1,4 +1,4 @@
-class Like {
+class Retweet {
   constructor(sparrowbot) {
     this.controller = sparrowbot.controller;
     this.client = sparrowbot.twitterClient;
@@ -6,15 +6,15 @@ class Like {
 
   run() {
     this.controller.on('interactive_message_callback', (bot, msg) => {
-      if (msg.actions[0].name !== 'like') {
+      if (msg.actions[0].name !== 'retweet') {
         return;
       }
 
-      this.client.post('favorites/create', { id: msg.callback_id }, () => {
+      this.client.post('statuses/retweet', { id: msg.callback_id }, () => {
         const nextMsg = msg.original_message;
         nextMsg.attachments.push({
           color: '#00aced',
-          text: `:heart: Liked by <@${msg.user}>`,
+          text: `:recycle: Retweeted by <@${msg.user}>`,
         });
         bot.replyInteractive(msg, nextMsg);
       });
@@ -22,4 +22,4 @@ class Like {
   }
 }
 
-module.exports = Like;
+module.exports = Retweet;

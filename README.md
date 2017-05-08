@@ -6,7 +6,7 @@ a Slack Bot to interact with Twitter for Customer Success :robot:
 
 - [x] Search
 - [x] Favorite
-- [ ] Retweet
+- [x] Retweet
 - [ ] Reply via Slack Thread
 - [ ] Tweet
 
