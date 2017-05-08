@@ -10,7 +10,7 @@ class Like {
         return;
       }
 
-      this.client.post('favorites/create', { id: msg.callback_id }, (err, tweet, res) => {
+      this.client.post('favorites/create', { id: msg.callback_id }, () => {
         const nextMsg = msg.original_message;
         nextMsg.attachments.push({
           color: '#00aced',

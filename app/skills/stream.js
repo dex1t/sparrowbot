@@ -11,7 +11,7 @@ class Stream {
         bot.reply(msg, `Already streaming by "${this.stream.query}" :no_mouth:`);
         return;
       } else if (!query || query.length < 0) {
-        bot.reply(msg, 'No query parameters specified :cry:\nUsage: start streaming query1,query2\nhttps://dev.twitter.com/streaming/overview/request-parameters#track')
+        bot.reply(msg, 'No query parameters specified :cry:\nUsage: start streaming query1,query2\nhttps://dev.twitter.com/streaming/overview/request-parameters#track');
         return;
       }
 
