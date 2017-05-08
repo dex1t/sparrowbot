@@ -6,24 +6,27 @@ class Like {
 
   run() {
     this.controller.on('interactive_message_callback', (bot, msg) => {
-      if (msg.actions[0].name !== 'like') {
-        return;
+      if (msg.actions[0].name === 'like') {
+        this.like(bot, msg);
       }
+    });
+  }
 
-      this.client.post('favorites/create', { id: msg.callback_id }, () => {
-        const nextMsg = msg.original_message;
+  like(bot, msg) {
+    this.client.post('favorites/create', { id: msg.callback_id }, () => {
+      const nextMsg = msg.original_message;
 
-        const action = nextMsg.attachments[0].actions.find(act => act.name === 'like');
-        action.name = 'unlike';
-        action.text = 'Unlike';
-        action.style = 'danger';
+      const action = nextMsg.attachments[0].actions.find(act => act.name === 'like');
+      action.name = 'unlike';
+      action.text = 'Unlike';
+      action.style = 'danger';
 
-        nextMsg.attachments.push({
-          color: '#00aced',
-          text: `:heart: Liked by <@${msg.user}>`,
-        });
-        bot.replyInteractive(msg, nextMsg);
+      nextMsg.attachments.push({
+        color: '#00aced',
+        text: `:heart: Liked by <@${msg.user}>`,
       });
+
+      bot.replyInteractive(msg, nextMsg);
     });
   }
 }
