@@ -19,46 +19,38 @@ class Reply {
       parentMsg.channel = msg.channel;
       parentMsg.user = msg.user; // ask user who pressed reply button
 
-      console.log(this.myTwitter);
-      const confirmReply = (res, convo) => {
-        const inReplyTo = msg.callback_id;
-        const replyText = `@${msg.actions[0].value} ${res.text}`;
-
-        const askMessage = {
-          text: 'Would you like to post this reply? :rocket: *(yes/no)*',
-          attachments: [{
-            author_name: `@${this.myTwitter.screen_name}`,
-            author_icon: this.myTwitter.profile_image_url_https,
-            author_link: `https://twitter.com/${this.myTwitter.screen_name}`,
-            text: replyText,
-            fallback: replyText,
-            color: this.myTwitter.profile_link_color,
-          }],
-        };
-        convo.ask(askMessage, [
-          {
-            pattern: bot.utterances.yes,
-            callback: (r, c) => {
-              c.say('tweeted :ok_hand:');
-              c.next();
-            },
-          },
-          {
-            pattern: bot.utterances.no,
-            callback: (r, c) => {
-              c.say('Cancelled :ghost:');
-              c.next();
-            },
-          },
-        ]);
-      };
-
       const askReplyContent = (res, convo) => {
         convo.ask(`<@${parentMsg.user}> Please write your reply here :writing_hand:`, [
           {
             default: true,
             callback: (r, c) => {
-              confirmReply(r, c);
+              const replyText = `@${msg.actions[0].value} ${r.text}`;
+              c.say({
+                text: 'Would you like to post this reply? :rocket:',
+                attachments: [{
+                  author_name: `@${this.myTwitter.screen_name}`,
+                  author_icon: this.myTwitter.profile_image_url_https,
+                  text: replyText,
+                  fallback: replyText,
+                  color: this.myTwitter.profile_link_color,
+                  callback_id: msg.callback_id,
+                  actions: [
+                    {
+                      name: 'tweet',
+                      text: 'Post',
+                      type: 'button',
+                      value: 'post',
+                      style: 'primary',
+                    },
+                    {
+                      name: 'tweet',
+                      text: 'Cancel',
+                      type: 'button',
+                      value: 'cancel',
+                    },
+                  ],
+                }],
+              });
               c.next();
             },
           },
