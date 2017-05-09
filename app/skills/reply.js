@@ -36,17 +36,16 @@ class Reply {
                   callback_id: msg.callback_id,
                   actions: [
                     {
-                      name: 'tweet',
-                      text: 'Post',
                       type: 'button',
-                      value: 'post',
+                      name: 'tweet-post',
+                      text: 'Post',
+                      value: replyText,
                       style: 'primary',
                     },
                     {
-                      name: 'tweet',
-                      text: 'Cancel',
                       type: 'button',
-                      value: 'cancel',
+                      name: 'tweet-cancel',
+                      text: 'Cancel',
                     },
                   ],
                 }],

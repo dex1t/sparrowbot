@@ -6,12 +6,11 @@ class Tweet {
 
   run() {
     this.controller.on('interactive_message_callback', (bot, msg) => {
-      if (msg.actions[0].name !== 'tweet') return;
-      switch (msg.actions[0].value) {
-        case 'tweet':
+      switch (msg.actions[0].name) {
+        case 'tweet-post':
           this.handleTweetButton(bot, msg);
           break;
-        case 'cancel':
+        case 'tweet-cancel':
           this.handleCancelButton(bot, msg);
           break;
         default:
@@ -21,7 +20,19 @@ class Tweet {
   }
 
   handleTweetButton(bot, msg) {
+    this.client.post('statuses/update', {
+      status: msg.actions[0].value,
+      in_reply_to_status_id: msg.callback_id,
+    }, (err) => {
+      if (err) {
+        this.controller.botkit.log('Error: statuses/update', err);
+      }
 
+      const nextMsg = msg.original_message;
+      nextMsg.text = 'Tweeted :dizzy:';
+      nextMsg.attachments[0].actions = null;
+      bot.replyInteractive(msg, nextMsg);
+    });
   }
 
   handleCancelButton(bot, msg) {
