@@ -23,7 +23,7 @@ class Tweet {
     this.client.post('statuses/update', {
       status: msg.actions[0].value,
       in_reply_to_status_id: msg.callback_id,
-    }, (err) => {
+    }, (err, tweet) => {
       const nextMsg = msg.original_message;
 
       if (err) {
@@ -37,6 +37,10 @@ class Tweet {
 
       nextMsg.text = 'Tweeted :dizzy:';
       nextMsg.attachments[0].actions = null;
+      nextMsg.attachments[0].author_link = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+      nextMsg.attachments[0].footer = 'Twitter';
+      nextMsg.attachments[0].footer_icon = 'https://a.slack-edge.com/6e067/img/services/twitter_pixel_snapped_32.png';
+      nextMsg.attachments[0].ts = new Date(Date.parse(tweet.created_at)).getTime() / 1000;
       bot.replyInteractive(msg, nextMsg);
     });
   }
