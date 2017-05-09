@@ -24,7 +24,7 @@ class Reply {
           {
             pattern: bot.utterances.no,
             callback: (r, c) => {
-              c.say('ok');
+              c.say('Cancelled :ghost:');
               c.next();
             },
           },
@@ -43,7 +43,7 @@ class Reply {
           {
             pattern: bot.utterances.no,
             callback: (r, c) => {
-              c.say('ok');
+              c.say('Cancelled :ghost:');
               c.next();
             },
           },
