@@ -14,7 +14,7 @@ class Retweet {
           this.unretweet(bot, msg);
           break;
         default:
-          bot.botkit.log('No action:', msg.actions);
+          // do nothing
       }
     });
   }
