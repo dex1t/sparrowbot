@@ -6,9 +6,6 @@ class Reply {
 
   run() {
     this.client.get('account/verify_credentials', (err, res) => {
-      if (err) {
-        this.controller.botkit.log('Error: account/verify_credentials', err);
-      }
       this.myTwitter = res;
     });
 

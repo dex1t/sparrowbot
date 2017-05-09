@@ -24,11 +24,17 @@ class Tweet {
       status: msg.actions[0].value,
       in_reply_to_status_id: msg.callback_id,
     }, (err) => {
+      const nextMsg = msg.original_message;
+
       if (err) {
-        this.controller.botkit.log('Error: statuses/update', err);
+        console.log(err);
+        nextMsg.text = `Oops :persevere: ${err[0].message}`;
+        nextMsg.attachments[0].actions = null;
+        nextMsg.attachments[0].color = '#D0012A';
+        bot.replyInteractive(msg, nextMsg);
+        return;
       }
 
-      const nextMsg = msg.original_message;
       nextMsg.text = 'Tweeted :dizzy:';
       nextMsg.attachments[0].actions = null;
       bot.replyInteractive(msg, nextMsg);
