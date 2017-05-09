@@ -135,6 +135,12 @@ class Search {
           text: 'Retweet',
           type: 'button',
         },
+        {
+          name: 'reply',
+          text: 'Reply',
+          type: 'button',
+          value: tweet.user.screen_name,
+        },
       ],
     };
   }
