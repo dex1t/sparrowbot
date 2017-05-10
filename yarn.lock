@@ -827,6 +827,16 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
+emoji-datasource@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/emoji-datasource/-/emoji-datasource-3.0.0.tgz#3c46c5aa4c39bb7a0c8e6877ae02cc94dbc1b12f"
+
+emoji-js@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/emoji-js/-/emoji-js-3.2.2.tgz#9f371f4bbd04f18dce08429925620b66f49af6a5"
+  dependencies:
+    emoji-datasource "3.0.0"
+
 encodeurl@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.1.tgz#79e3d58655346909fe6f0f45a5de68103b294d20"
