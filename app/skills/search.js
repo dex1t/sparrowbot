@@ -25,7 +25,7 @@ class Search {
     });
 
     this.controller.hears(['^search (.*)$', '^search$'], 'direct_mention', (bot, msg) => {
-      const query = msg.match[1] && msg.match[1].trim();
+      const query = msg.match[1] && this.removeSlackLink(msg.match[1].trim());
       const id = msg.channel;
 
       if (this.searchState[id] && this.searchState[id].query) {
@@ -143,6 +143,10 @@ class Search {
         },
       ],
     };
+  }
+
+  removeSlackLink(text) {
+    return text.replace(/<(http|https):\/\/[^<>]+>/g, m => m.replace(/(^<|>$)/g, "").split('|').pop());
   }
 }
 
