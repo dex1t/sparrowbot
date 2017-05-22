@@ -27,7 +27,8 @@ class Reply {
           {
             default: true,
             callback: (r, c) => {
-              const replyText = `@${msg.actions[0].value} ${this.replaceEmojiSyntax(r.text)}`;
+              let replyText = `@${msg.actions[0].value} ${this.replaceEmojiSyntax(r.text)}`;
+              replyText = this.removeSlackLink(replyText);
               c.say({
                 text: 'Would you like to post this reply? :rocket:',
                 attachments: [{
@@ -73,6 +74,10 @@ class Reply {
   replaceEmojiSyntax(text) {
     const nativeEmojiText = this.emojiConvertor.replace_colons(text);
     return nativeEmojiText.replace(/:[a-zA-Z0-9-_+]+:/g, '');
+  }
+
+  removeSlackLink(text) {
+    return text.replace(/<(http|https):\/\/[^<>]+>/g, m => m.replace(/(^<|>$)/g, "").split('|').pop());
   }
 }
 
