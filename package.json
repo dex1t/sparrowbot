@@ -6,11 +6,11 @@
   "repository": "https://github.com/dex1t/sparrowbot",
   "author": "dex1t",
   "license": "MIT",
-  "engines": {
-    "node": "7.9"
+  "scripts": {
+    "start": "node index.js"
   },
   "dependencies": {
-    "botkit": "^0.5.2",
+    "botkit": "0.7.5",
     "botkit-storage-redis": "^1.1.0",
     "emoji-js": "^3.2.2",
     "twitter": "^1.7.0"
