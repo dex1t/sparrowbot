@@ -1,15 +1,15 @@
-const Botkit = require('botkit');
-const Twitter = require('twitter');
-const path = require('path');
-const fs = require('fs');
-const url = require('url');
+const Botkit = require("botkit");
+const Twitter = require("twitter");
+const path = require("path");
+const fs = require("fs");
+const url = require("url");
 
 const redisURL = url.parse(process.env.REDISTOGO_URL || process.env.REDIS_URL);
-const redisStorage = require('botkit-storage-redis')({
-  namespace: 'sparrowbot',
+const redisStorage = require("botkit-storage-redis")({
+  namespace: "sparrowbot",
   host: redisURL.hostname,
   port: redisURL.port,
-  auth_pass: redisURL.auth && redisURL.auth.split(':')[1],
+  auth_pass: redisURL.auth && redisURL.auth.split(":")[1]
 });
 
 class Bot {
@@ -18,46 +18,51 @@ class Bot {
       retry: 10,
       clientId: process.env.SLACK_APP_CLIENT_ID,
       clientSecret: process.env.SLACK_APP_CLIENT_SECRET,
-      scopes: ['bot'],
-      storage: redisStorage,
+      scopes: ["bot"],
+      storage: redisStorage
     });
     this.twitterClient = new Twitter({
       consumer_key: process.env.TWITTER_CONSUMER_KEY,
       consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
       access_token_key: process.env.TWITTER_ACCESS_TOKEN,
-      access_token_secret: process.env.TWITTER_ACCESS_SECRET,
+      access_token_secret: process.env.TWITTER_ACCESS_SECRET
     });
   }
 
   setupWebserver() {
     this.controller.setupWebserver(process.env.PORT, () => {
-      this.controller.createOauthEndpoints(this.controller.webserver, (err, req, res) => {
-        if (err) {
-          res.status(500).send(`ERROR: ${err}`);
-        } else {
-          res.send('Success!');
+      this.controller.createOauthEndpoints(
+        this.controller.webserver,
+        (err, req, res) => {
+          if (err) {
+            res.status(500).send(`ERROR: ${err}`);
+          } else {
+            res.send("Success!");
+          }
         }
-      });
+      );
       this.controller.createWebhookEndpoints(this.controller.webserver);
       this.controller.createHomepageEndpoint(this.controller.webserver);
     });
   }
 
   setupSkills() {
-    fs.readdirSync(path.join(__dirname, 'skills')).forEach((file) => {
+    fs.readdirSync(path.join(__dirname, "skills")).forEach(file => {
       const Skill = require(`./skills/${file}`); // eslint-disable-line
       new Skill(this).run();
     });
   }
 
   run() {
-    this.controller.spawn({
-      token: process.env.SLACK_BOT_TOKEN,
-    }).startRTM((err) => {
-      if (err) {
-        throw new Error(err);
-      }
-    });
+    this.controller
+      .spawn({
+        token: process.env.SLACK_BOT_TOKEN
+      })
+      .startRTM(err => {
+        if (err) {
+          throw new Error(err);
+        }
+      });
     this.setupWebserver();
     this.setupSkills();
   }
