@@ -25,6 +25,17 @@ a.k.a micro Twitter client on Slack.
 
 ## Development
 
+## Env
+
+Set Slack and Twitter tokens to `.env`, and load it by [direnv](https://github.com/direnv/direnv).
+
+```
+$ cp .env.example .env
+$ vim .env # set your tokens
+```
+
+## Tunneling
+
 Slack requires callback url with https to use the interactive message buttons. Use [localtunnel.me](http://localtunnel.me/) (or ngrock) on development.  
 
 ```
