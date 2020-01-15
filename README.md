@@ -23,6 +23,17 @@ a Slack Bot to interact with Twitter for Customer Success :robot:
 
 ## Development
 
+## Env
+
+Set Slack and Twitter tokens to `.env`, and load it by [direnv](https://github.com/direnv/direnv).
+
+```
+$ cp .env.example .env
+$ vim .env # set your tokens
+```
+
+## Tunneling
+
 Slack requires callback url with https to use the interactive message buttons. Use [localtunnel.me](http://localtunnel.me/) (or ngrock) on development.  
 https://github.com/howdyai/botkit/blob/master/docs/readme-slack.md#message-buttons
 
