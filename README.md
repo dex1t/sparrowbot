@@ -8,7 +8,8 @@ a Slack Bot to interact with Twitter for Customer Success :robot:
 - [x] Like/Unlike
 - [x] Retweet/Unretweet
 - [x] Reply via Slack Thread
-- [ ] Tweet
+
+![](https://user-images.githubusercontent.com/870741/72449868-ba978580-37fc-11ea-88d3-627208e10037.png)
 
 ## Set up
 
@@ -24,7 +25,6 @@ a Slack Bot to interact with Twitter for Customer Success :robot:
 ## Development
 
 Slack requires callback url with https to use the interactive message buttons. Use [localtunnel.me](http://localtunnel.me/) (or ngrock) on development.  
-https://github.com/howdyai/botkit/blob/master/docs/readme-slack.md#message-buttons
 
 ```
 $ lt -p 8080 -s sparrowbot-dev
