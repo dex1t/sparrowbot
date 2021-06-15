@@ -1,6 +1,6 @@
 # Sparrow Bot
 
-a Slack Bot to interact with Twitter for Customer Success :robot:  
+a Slack Bot to interact with Twitter for Customer Support :robot:  
 a.k.a micro Twitter client on Slack.
 
 ## Features
